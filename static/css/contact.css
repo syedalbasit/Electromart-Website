@@ -1,0 +1,441 @@
+@import url('./base.css');
+
+.contact__main__header {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.5)), url('../images/Contactpage.png');
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin-top: 2rem;
+    display: flex;
+    min-height: 40vh;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    height: 483px;
+}
+
+.main__contact__container {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-items: flex-start;
+    column-gap: 1.2rem;
+    margin-top: 3rem;
+
+}
+
+.main__contact__container h2,
+.contact__specification h2 {
+    color: var(--font--black--color);
+    font-size: 2rem;
+    
+}
+
+.contact__specification p {
+    font-size: 1.2em;
+    display: flex;
+    gap: 14px;
+    padding-top: 8px;
+}
+
+.contact__rentaly {
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    row-gap: 2rem;
+    justify-content: center;
+    align-items: flex-start;
+    width: 67%;
+}
+
+.main__testimonial {
+    width: 28%;
+}
+
+
+.testimonial__header {
+    margin-top: 2rem;
+    font-weight: var(--weight--bold);
+    margin-bottom: -3rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.testimonial__header>span {
+    height: 4px;
+    width: 25%;
+    background-color: var(--font--primary--color);
+    transform: skewX(-50deg);
+
+    margin: 0.8rem 0 0.8rem 0.5rem;
+    display: block;
+}
+
+.contact__specification {
+    display: flex;
+    align-items: flex-start;
+    column-gap: 3.5rem;
+    padding: 2rem;
+}
+
+.contact__rentaly input[type="text"],
+.contact__rentaly input[type="email"],
+.contact__rentaly input[type="tel"],
+.contact__rentaly textarea {
+    padding: 0.8rem;
+    font-size: 23px;
+    margin-bottom: 1rem;
+    border-radius: 6px;
+    border: 2px solid #eeeeee;
+    background: rgba(0, 0, 0, .025);
+    color: #333;
+    outline: none;
+    box-shadow: none;
+    transition: all 0.4s ease-in-out;
+}
+
+.contact__info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    column-gap: 3rem;
+    width: 100%;
+}
+
+.contact__info input {
+    width: 30%;
+    height: 45px;
+}
+
+.contact__rentaly textarea {
+    height: 220px;
+    width: 100%;
+}
+
+.contact__specification .contact__offices {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    row-gap: 1.5rem;
+    align-items: flex-start;
+    padding: 30px;
+    box-shadow: 3px 3px 9px rgba(164, 164, 186, 0.2);
+    border: 1px solid #dddddd;
+    border-radius: 6px;
+    min-height: 250px;
+}
+
+.contact__offices div {
+    display: flex;
+    align-items: center;
+    column-gap: 1.5rem;
+}
+
+.contact__offices div p {
+    width: 80%;
+}
+
+.contact__offices i {
+    font-size: 2rem;
+    height: 40px;
+    width: 40px;
+}
+
+
+.contact__rentaly input[type="text"]:focus:invalid,
+.contact__rentaly input[type="email"]:focus:invalid,
+.contact__rentaly input[type="tel"]:focus:invalid,
+.contact__rentaly textarea:focus:invalid {
+    border: 2px solid rgba(120, 202, 92, 0.6);
+}
+
+.contact__rentaly input[type="text"]:focus:valid,
+.contact__rentaly input[type="email"]:focus:valid,
+.contact__rentaly input[type="tel"]:focus:valid,
+.contact__rentaly textarea:focus:valid {
+    border: 2px solid rgba(120, 202, 92, 0.2);
+    background: rgba(23, 149, 16, 0.1);
+    box-shadow: 0px 2px 15px rgba(120, 202, 92, 0.2);
+}
+
+.location__container {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+
+.map__upper__container {
+
+    min-height: 600px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 8px;
+    background-color: rgba(120, 202, 92, 0.2);
+    box-shadow: 2px 0px 15px rgba(120, 202, 92, 0.2);
+    padding: 5rem;
+    margin: 2rem;
+}
+
+.map-container {
+    position: relative;
+    width: 50%;
+    height: 100%23;
+    object-fit: cover;
+    background: transparent;
+}
+
+.map-container img {
+    width: 100%;
+    height: auto;
+    background-color: transparent;
+}
+
+.marker {
+    position: absolute;
+    background-color: green;
+    border-radius: 50%;
+    width: 15px;
+    height: 15px;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: rgba(23, 149, 16, 1);
+    animation: pulse 2s infinite;
+
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(0.9);
+        box-shadow: 0 0 0px 0px rgba(23, 149, 16, 0.3);
+    }
+
+    70% {
+        transform: scale(1);
+        box-shadow: 0 0 0px 10px rgba(23, 149, 16, 0.3);
+    }
+
+    100% {
+        transform: scale(0.9);
+    }
+
+}
+
+.marker-label {
+    position: absolute;
+    background-color: white;
+    padding: 4px 8px;
+    border-radius: 12px;
+    font-size: 14px;
+}
+
+.islamabad-dot {
+    top: 29%;
+    left: 72%;
+}
+
+.islamabad-label {
+    top: 27.7%;
+    left: 60%;
+    background: transparent;
+    font-weight: bold
+}
+
+.karachi-dot {
+    bottom: 13%;
+    left: 40%;
+}
+
+.karachi-label {
+    bottom: 11.8%;
+    left: 42%;
+    background: transparent;
+    font-weight: bold
+}
+
+.multan-dot {
+    top: 52%;
+    left: 67%;
+}
+
+.multan-label {
+    top: 51.1%;
+    left: 58%;
+    background: transparent;
+    font-weight: bold;
+}
+
+
+/* ==================== Testimonial =================== */
+
+.testimonial__wrapper {
+    margin-top: 4rem;
+    background-color: rgba(0, 0, 0, .025);
+    position: relative;
+    width: 100%;
+    height: 280px;
+    border-radius: 6px;
+    box-shadow: 0 0 10px rgba(1, 17, 39, 0.08);
+    overflow: hidden;
+}
+
+.testimonial-container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+}
+
+.testimonial {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    row-gap: 1rem;
+    min-width: 100%;
+}
+
+.testimonial p {
+    text-align: center;
+    margin-top: 0.5rem;
+    font-size: 15px;
+    padding: 0rem 1.5rem;
+}
+
+.testimonial img {
+    display: block;
+    margin: 0 auto;
+    border-radius: 50%;
+    width: 7.4rem;
+}
+
+.testimonial h3 {
+    color: var(--font--secondary--color);
+    font-size: 16px;
+    margin-bottom: -1rem;
+}
+
+.quote-icon i {
+    border-bottom-right-radius: 13px;
+    border-top-right-radius: 0px;
+    border-bottom-left-radius: 0px;
+}
+
+.testimonial h6 {
+    color: var(--bg--first--color);
+    font-size: 1.3em;
+    letter-spacing: 0.03em;
+    font-weight: 600;
+    margin-top: 3px;
+}
+
+
+.testimonial__wrapper button {
+    font-size: 1.8em;
+    height: 40px;
+    width: 40px;
+    background-color: #ffffff;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    border: none;
+    box-shadow: 0 0 10px rgba(1, 17, 39, 0.25);
+    cursor: pointer;
+    border-radius: 50%;
+}
+
+button#next {
+    right: 2rem;
+    top: 88%;
+    color: #0163d2;
+    font-weight: bolder;
+}
+
+button#prev {
+    left: 2rem;
+    top: 88%;
+    color: #0163d2;
+    font-weight: bolder;    
+}
+
+/* 
+.hidden{
+    opacity: 0;
+    transform: translateY(10%);
+    transition: all 1s;
+}
+
+.show{
+    opacity: 1;
+    transform: translateY(0%);
+} */
+
+/* Popup Styles */
+.popup {
+    position: absolute;
+    background-color: var(--font--secondary--color);
+    font-weight: bold;
+    padding: 15px;
+    border-radius: 10px;
+    font-size: 16px;
+    animation: right_to_left 0.5s ease-out;
+    transition: right 0.5s ease-out;
+}
+
+@keyframes right_to_left {
+    0% {
+        transform: translateX(100%);
+    }
+
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+.popup-content {
+    display: flex;
+    align-items: center;
+}
+
+.tick-mark {
+    margin-right: 10px;
+    font-size: 20px;
+    animation: tick-animation 0.5s ease-out;
+}
+
+@keyframes tick-animation {
+    0% {
+        transform: scale(0);
+        opacity: 0;
+    }
+
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.hidden2 {
+    display: none;
+}
+
+.visible {
+    right: 0px;
+}
+
+
+
+/* .buttonclass1 {
+    display: inline-block;
+    padding: 1.5rem 3rem;
+    border-radius: 5px;
+    background-color: var(--button--primary--bg--color);
+    color: var(--font--white--color);
+    transition: all 0.5s ease-in-out;
+    cursor: pointer;
+} */

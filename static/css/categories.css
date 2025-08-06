@@ -1,0 +1,254 @@
+
+body {
+    font-weight: 600;
+    font-family: sans-serif;
+}
+
+.categories {
+    position: relative;
+    height: 161vh;
+    display: flex;
+    justify-content: center;
+}
+
+.categories h2 {
+    position: absolute;
+    left: 111px;
+    top: 80px;
+}
+
+.categories h2::after {
+    content: '';
+    display: block;
+    /* Make the line appear below the h2 */
+    width: 80vw;
+    height: 2px;
+    background-color: #666;
+    margin-top: 20px;
+    /* Optional: add space between the h2 text and the line */
+}
+
+
+
+.wide {
+    grid-column: span 2;
+}
+
+.category-card {
+    background: #f9f9f9;
+    border-radius: 10px;
+    text-align: center;
+    padding: 20px;
+    transition: transform 0.3s;
+}
+
+.category-card:hover {
+    transform: scale(1.05);
+}
+
+.category-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.category-name {
+    font-weight: bold;
+    margin: 10px 0;
+}
+
+.view-more {
+    color: gray;
+    font-size: 0.9em;
+    text-transform: uppercase;
+}
+
+
+
+/* CATEGORIES */
+
+.parent {
+    width: 80vw;
+    height: 900px;
+    position: absolute;
+    top: 180px;
+    left: 109px;
+    display: grid;
+    justify-content: center;
+    /* border: 2px solid rgb(92, 59, 59); */
+    grid-template-columns: repeat(7, 1fr);
+    grid-template-rows: 7fr repeat(2, 1fr) 7fr repeat(2, 1fr) 7fr repeat(2, 1fr);
+    grid-column-gap: 20px;
+    grid-row-gap: 20px;
+    /* border: 2px solid red; */
+}
+
+.cat1 {
+    grid-area: 1 / 1 / 4 / 4;
+}
+
+.cat2 {
+    grid-area: 1 / 4 / 4 / 6;
+}
+
+.cat3 {
+    grid-area: 1 / 6 / 4 / 8;
+}
+
+.cat4 {
+    grid-area: 4 / 1 / 7 / 3;
+}
+
+.cat5 {
+    grid-area: 4 / 3 / 7 / 6;
+}
+
+.cat6 {
+    grid-area: 4 / 6 / 7 / 8;
+}
+
+.cat7 {
+    grid-area: 7 / 5 / 10 / 8;
+}
+
+.cat8 {
+    grid-area: 7 / 3 / 10 / 5;
+}
+
+.cat9 {
+    grid-area: 7 / 1 / 10 / 3;
+}
+
+.cat_boxes {
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    cursor: pointer;
+
+}
+
+.cat1 {
+    background-image: url(../categories/1.jpg);
+    position: relative;
+    transition: transform 0.3s ease;
+}
+
+.cat1:hover {
+    transform: scale(1.04);
+}
+
+.cat2 {
+    background-image: url(../categories/2.jpg);
+    position: relative;
+    transition: transform 0.3s ease;
+}
+
+.cat2:hover {
+    transform: scale(1.04);
+}
+
+
+.cat3 {
+    background-image: url(../categories/3.webp);
+    position: relative;
+    transition: transform 0.3s ease;
+}
+
+.cat3:hover {
+    transform: scale(1.04);
+}
+
+.cat4 {
+    background-image: url(../categories/4.webp);
+    position: relative;
+    transition: transform 0.3s ease;
+}
+
+.cat4:hover {
+    transform: scale(1.04);
+}
+
+.cat5 {
+    background-image: url(../categories/5.webp);
+    position: relative;
+    transition: transform 0.3s ease;
+}
+
+.cat5:hover {
+    transform: scale(1.04);
+}
+
+
+.cat6 {
+    background-image: url(../categories/6.webp);
+    position: relative;
+    transition: transform 0.3s ease;
+}
+
+.cat6:hover {
+    transform: scale(1.04);
+}
+
+
+.cat7 {
+    background-image: url(../categories/8.png);
+    position: relative;
+    transition: transform 0.3s ease;
+    background-color: #f3f3f3;
+}
+
+.cat7:hover {
+    transform: scale(1.04);
+}
+
+
+.cat8 {
+    /* background-image: url(../categories/product02.png.webp);  */
+    transition: transform 0.3s ease;
+    background-color: #f3f3f3;
+    position: relative;
+    overflow: hidden;
+}
+
+.cat8 img{
+    width: 341px;
+    height: 341px;
+    position: absolute;
+    left: 115px;
+    bottom: 25px;
+    rotate: 13deg;
+}
+
+.cat8:hover {
+    transform: scale(1.04);
+}
+
+.cat9 {
+    background-image: url(../categories/7.png);
+    transition: transform 0.3s ease;
+    background-color: #f3f3f3;
+    position: relative;
+}
+
+.cat9:hover {
+    transform: scale(1.04);
+}
+
+.category_content {
+    bottom: 20px;
+    left: 27px;
+    position: absolute;
+    text-transform: capitalize;
+}
+
+.category_content h4 {
+    text-transform: uppercase;
+}
+
+.category_content a {
+    margin-top: 7px;
+    color: black;
+    font-size: 16px;
+    font-weight: 500;
+    text-decoration: none;
+}

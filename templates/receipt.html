@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        <style>
+        .receipt-container {
+        max-width: 700px;
+        margin: 50px auto;
+        padding: 20px;
+        background-color: #fff;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    h1 {
+        font-size: 4rem;
+        color: #28a745;
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    h3, h4 {
+        font-size: 2.5rem;
+        color: #343a40;
+        margin-top: 20px;
+        margin-bottom: 10px;
+        border-bottom: 2px solid #007bff;
+        padding-bottom: 5px;
+    }
+
+    .details, .order-items {
+        margin-bottom: 20px;
+    }
+
+    .details ul, .order-items ul {
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .details ul li, .order-items ul li {
+        margin: 10px 0;
+        font-size: 1.4rem;
+        line-height: 1.5;
+    }
+
+    .details ul li strong, .order-items ul li strong {
+        font-weight: bold;
+        color: #495057;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+    }
+
+    table th, table td {
+        border: 1px solid #dee2e6;
+        padding: 10px;
+        text-align: left;
+        
+    }
+
+    table th {
+        background-color: #007bff;
+        color: #fff;
+        font-size: 1.7rem;
+    }
+
+    table td {
+        background-color: #f8f9fa;
+        font-size: 1.4rem;
+    }
+
+    .btn {
+        display: inline-block;
+        margin: 20px 0;
+        padding: 10px 20px;
+        font-size: 1rem;
+        color: #fff;
+        background-color: #007bff;
+        text-align: center;
+        text-decoration: none;
+        border-radius: 5px;
+        transition: background-color 0.3s ease;
+    }
+
+    .btn:hover {
+        background-color: #0056b3;
+    }
+
+    .order-summary {
+        padding: 10px;
+        border: 1px solid #ced4da;
+        background-color: #f1f3f5;
+        border-radius: 5px;
+        margin-top: 10px;
+    }
+    </style>
+    </head>
+    <body>
+        <div class="receipt-container">
+            <h1>Order Receipt</h1>
+            <h3>Order ID: {{ order.id }}</h3>
+        
+            <div class="details">
+                <h4>Order Details</h4>
+                <ul>
+                    <li><strong>Date:</strong> {{ order.created_at|date:"F j, Y, g:i a" }}</li>
+                    <li><strong>Total Amount:</strong> ${{ order.total_amount }}</li>
+                    <li><strong>Status:</strong> {{ order.status }}</li>
+                    <li><strong>Payment Type:</strong> {{ order.payment }}</li>
+                </ul>
+            </div>
+        
+            <h4>Items Ordered</h4>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Product</th>
+                        <th>Quantity</th>
+                        <th>Price</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for item in order_items %}
+                    <tr>
+                        <td>{{ item.product.name }}</td>
+                        <td>{{ item.quantity }}</td>
+                        <td>${{ item.price }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        
+
+        </div>
+        
+    </body>
+</html>

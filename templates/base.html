@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/de9e1561cd.js"
+      crossorigin="anonymous" defer></script>
+      <link href="https://cdn.jsdelivr.net/npm/remixicon/fonts/remixicon.css" rel="stylesheet">
+    <meta name="csrf-token" content="{{ csrf_token }}">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    <link rel="stylesheet" href="{% static 'css/footer.css' %}">
+    {% block extra_css %}{% endblock %}
+  </head>
+  <body>
+    <div class="main__home">
+      <input type="hidden" name="csrfmiddlewaretoken" value="{{ csrf_token }}">
+      <nav class="navbar">
+        <div class="logo"><a href="{% url 'home' %}"><img
+              src="{% static './images/logobg.png' %}"
+              alt="Electro Mart" /></a></div>
+        <ul class="nav__items">
+          <a href="{% url 'home' %}"
+            class="nav__link {% if request.path == '/' %}  {% endif %}">Home</a>
+          <a href="{% url 'about' %}"
+            class="nav__link {% if request.path == '/about' %}  {% endif %}">About</a>
+          <a href="{% url 'categories' %}"
+            class="nav__link {% if request.path == '/categories' %}  {% endif %}">Categories</a>
+          <a href="{% url 'userdashboard' %}"
+            class="nav__link {% if user.is_authenticated %} action {% else %} guest {% endif %}">
+            Dashboard
+          </a>
+          <a href="{% url 'contact' %}"
+            class="nav__link {% if request.path == '/contact' %}  {% endif %}">Contact</a>
+        </ul>
+        <div class="account__btns">
+          {% if user.is_authenticated %}
+          <!-- Logged-in User Section -->
+          <div class="user__menu">
+            <a href="{% url 'userdashboard' %}" class="user__link">
+              <img
+                src="{% static './images/userprofile.png' %}"
+                alt="{{ user.username }}" class="user__photo">
+              <span class="user__name">{{ user.username }}</span>
+            </a>
+            <a href="{% url 'logout' %}" class="buttonclass1">Logout</a>
+          </div>
+          {% else %}
+          <!-- Login and Signup Buttons -->
+          <a href="{% url 'login' %}" class="buttonclass1">Login</a>
+          <a href="{% url 'signup' %}" class="buttonclass2">Signup</a>
+          {% endif %}
+        </div>
+      </nav>
+      <!-- Messages Configuration -->
+      <div class="messages hidden-right">
+        {% if messages %}
+        {% for message in messages %}
+        <div class="alert hidden-up alert-{{ message.tags }}">
+          {{ message }}
+        </div>
+        {% endfor %}
+        {% endif %}
+      </div>
+      {% block body %}{% endblock %}
+      <div class="footer">
+        <div class="container footer__container" style="margin: 0 auto">
+          <div class="footer__about">
+            <div class="footer__rental">
+              <div class="logo_footer"><a href="{% url 'home' %}"><img
+                    src="{% static './images/logobg.png' %}"
+                    alt="Electro Mart" /></a></div>
+            </div>
+            <p style="width: 380px;">
+              We bring you the latest in smartphones, tablets, iPads, and other
+              electronic gadgets at unbeatable prices. Our mission is to offer
+              you a seamless shopping experience, combining quality products
+              with affordable pricing, so you can stay connected and up-to-date
+              without stretching your budget.
+            </p>
+          </div>
+          <div class="footer__contact">
+            <h3 style="color:white;">Contact Info</h3>
+            <div class="footer__contact__content">
+              <i class="fa-solid fa-location-dot"></i>
+              <p>
+                36th St, New York, NY 101,<br />House No.5, st 7,
+                Gulshan-e-Iqbal
+              </p>
+            </div>
+            <div class="footer__contact__content">
+              <i class="fa-solid fa-phone"></i>
+              <p>+92 3412073063,<br />+92 3116873502</p>
+            </div>
+            <div class="footer__contact__content">
+              <i class="fa-regular fa-envelope"></i>
+              <p><a href>contact@example.com</a></p>
+            </div>
+          </div>
+          <div class="footer__quick__link">
+            <h3 style="color:white;">Quick Links</h3>
+            <p><a class="bullet">About</a></p>
+            <p><a class="bullet">Blog</a></p>
+            <p><a class="bullet">Careers</a></p>
+            <p><a class="bullet">News</a></p>
+            <p><a class="bullet">Partners</a></p>
+          </div>
+          <div class="footer__social">
+            <h3 style="color:white;">Social Network</h3>
+            <div class="footer__social__links">
+              <a href><i class="fa-brands fa-x-twitter"></i></a>
+              <a href><i class="fa-brands fa-facebook-f"></i></a>
+              <a href><i class="fa-brands fa-linkedin"></i></a>
+              <a href><i class="fa-brands fa-pinterest-p"></i></a>
+              <a href><i class="fa-solid fa-rss"></i></a>
+            </div>
+          </div>
+        </div>
+        <p class="footer__paragraph">
+          Copyright &copy; 2024 | All right reserved | ElectroMart Designer
+        </p>
+      </div>
+    </div>
+    <script src="{% static 'js/base.js' %}"></script>
+    {% block extra_js %}{% endblock %}
+  </body>
+</html>

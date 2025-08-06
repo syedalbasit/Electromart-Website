@@ -1,0 +1,106 @@
+{% extends "base_withsearch.html" %}
+{% load static %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'css/about.css' %}"> 
+    <link rel="stylesheet" href="{% static 'css/home.css' %}"> 
+    <link rel="icon" type="image/x-icon" href="{% static 'favicon.ico' %}">
+{% endblock %}
+
+{% block body %}
+
+<div class="about-container">
+    <div class="about-info hidden-left" >
+        <h1 style="margin-left: 74px;line-height: 60px;letter-spacing: -2px;font-weight: bolder;font-size: 50px;color:black;">About Our Store</h1>
+        <p style="margin-left: 74px;text-align:justify;">We are a leader in global prestige retail, teaching and inspiring clients to play in a world of beauty. Owned by LVMH Moët Hennessy Louis Vuitton, the world’s leading luxury goods group, our store has earned its reputation with expertise, innovation, and entrepreneurial spirit.</p>
+        <p style="margin-left: 74px;text-align:justify;">We offer a wide range of products, from electronics to fashion, serving customers worldwide with our excellent customer support and high-quality offerings.</p>
+    </div>
+    <div class="about-image">
+        <img src="{% static 'images/about_bg.png' %}" alt="About Our Store">
+    </div>
+</div>
+
+<div class="review-carousel">
+    <button id="prevReview"></button>
+    <div class="review-container">
+    </div>
+    <button id="nextReview"></button>
+</div>
+<div class="pagination">
+    <span class="dot" onclick="currentSlide(1)"></span>
+    <span class="dot" onclick="currentSlide(2)"></span>
+    <span class="dot" onclick="currentSlide(3)"></span>
+    <span class="dot" onclick="currentSlide(4)"></span>
+</div>
+
+
+
+<div class="stats-container hidden-down">
+    <div class="stat-item" id="user-account">
+        <img src="{% static 'images/user.png' %}" alt="User Account Icon" class="stat-icon">
+        <div class="stat-info">
+            <span class="stat-number counter">1989</span>
+            <span class="stat-label">User Account</span>
+        </div>
+    </div>
+    <div class="stat-item" id="finished-projects">
+        <img src="{% static 'images/project.png' %}" alt="Finished Projects Icon" class="stat-icon">
+        <div class="stat-info">
+            <span class="stat-number counter">589</span>
+            <span class="stat-label">Finished Projects</span>
+        </div>
+    </div>
+    <div class="stat-item" id="happy-clients">
+        <img src="{% static 'images/happy.png' %}" alt="Happy Clients Icon" class="stat-icon">
+        <div class="stat-info">
+            <span class="stat-number counter">356</span>
+            <span class="stat-label">Happy Clients</span>
+        </div>
+    </div>
+    <div class="stat-item" id="sellers-active">
+        <img src="{% static 'images/home.png' %}" alt="Sellers Active Icon" class="stat-icon">
+        <div class="stat-info">
+            <span class="stat-number counter">989</span>
+            <span class="stat-label">Sellers Active On ElectroMart</span>
+        </div>
+    </div>
+</div>
+
+<div class="leaders-section">
+    <h2>Meet Our Leaders</h2>
+    <div class="leaders-container">
+        <div class="leader">
+            <img src="{% static 'images/Veronica.png' %}" alt="Ms. Veronica" class="leader-image">
+            <div class="leader-info">
+                <div class="leader-name">Ms. Veronica</div>
+                <div class="leader-title">Web Designer</div>
+            </div>
+        </div>
+        <div class="leader">
+            <img src="{% static 'images/selena.png' %}"  alt="Selena Dizimi" class="leader-image">
+            <div class="leader-info">
+                <div class="leader-name">Selena Dizimi</div>
+                <div class="leader-title">CEO Founder</div>
+            </div>
+        </div>
+        <div class="leader">
+            <img src="{% static 'images/missa.png' %}" alt="Missa Santos" class="leader-image">
+            <div class="leader-info">
+                <div class="leader-name">Missa Santos</div>
+                <div class="leader-title">Chief Operating Officer</div>
+            </div>
+        </div>
+        <div class="leader">
+            <img src="{% static 'images/lissa.png' %}"  alt="Lisa Antonia" class="leader-image">
+            <div class="leader-info">
+                <div class="leader-name">Lisa Antonia</div>
+                <div class="leader-title">Chief Financial Officer</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script src="{% static 'js/about.js' %}"></script>
+
+{% endblock %}

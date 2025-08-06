@@ -1,0 +1,85 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block extra_css %}
+{% comment %} <link rel="stylesheet" href="{% static 'css/base.css' %}">  {% endcomment %}
+<link rel="stylesheet" href="{% static 'css/categories.css' %}">
+{% endblock %}
+
+{% block body %}
+<div class="categories">
+    <h2>SHOP BY CATEGORIES</h2>
+    <div class="line"></div>
+    <div class="parent">
+        {% for category in categories %}
+        {% if forloop.counter == 1 %}
+        <div class="cat1 cat_boxes">
+            <div class="category_content">
+                <h4>Headphones & Audio</h4>
+                <a href="{% url 'products' category.id %}">VIEW MORE</a>
+            </div>
+        </div>
+        {% elif forloop.counter == 2 %}
+        <div class="cat2 cat_boxes">
+            <div class="category_content">
+                <h4>Mobile Phones</h4>
+                <a href="{% url 'products' category.id %}">VIEW MORE</a>
+            </div>
+        </div>
+        {% elif forloop.counter == 3 %}
+        <div class="cat3 cat_boxes">
+            <div class="category_content">
+                <h4>Cameras</h4>
+                <a href="{% url 'products' category.id %}">VIEW MORE</a>
+            </div>
+        </div>
+        {% elif forloop.counter == 4 %}
+        <div class="cat4 cat_boxes">
+            <div class="category_content">
+                <h4>Gaming Accessories</h4>
+                <a href="{% url 'products' category.id %}">VIEW MORE</a>
+            </div>
+        </div>
+        {% elif forloop.counter == 5 %}
+        <div class="cat5 cat_boxes">
+            <div class="category_content">
+                <h4>Audio Devices</h4>
+                <a href="{% url 'products' category.id %}">VIEW MORE</a>
+            </div>
+        </div>
+        {% elif forloop.counter == 6 %}
+        <div class="cat6 cat_boxes">
+            <div class="category_content">
+                <h4>Televisions & Projectors</h4>
+                <a href="{% url 'products' category.id %}">VIEW MORE</a>
+            </div>
+        </div>
+        {% elif forloop.counter == 7 %}
+        <div class="cat7 cat_boxes">
+            <div class="category_content">
+                <h4>Tablets & iPads</h4>
+                <a href="{% url 'products' category.id %}">VIEW MORE</a>
+            </div>
+        </div>
+        {% elif forloop.counter == 8 %}
+        <div class="cat8 cat_boxes">
+            <img src="{% static 'categories/product02.png.webp' %}" alt="">
+            <div class="category_content">
+                <h4>Wearable Technologies</h4>
+                <a href="{% url 'products' category.id %}">VIEW MORE</a>
+            </div>
+        </div>
+        {% elif forloop.counter == 9 %}
+        <div class="cat9 cat_boxes">
+            <div class="category_content">
+                <h4>Laptops & Computers</h4>
+                <a href="{% url 'products' category.id %}">VIEW MORE</a>
+            </div>
+        </div>
+        {% endif %}
+        {% endfor %}
+        
+    </div>
+</div>
+{% endblock %}
+

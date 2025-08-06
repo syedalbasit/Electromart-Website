@@ -1,0 +1,192 @@
+.container {
+    
+    margin: 20px auto;
+    padding: 20px;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.breadcrumb {
+    font-size: 14px;
+    margin-bottom: 15px;
+}
+
+
+.row{
+    box-shadow: 2px 4px 8px rgba(0.1, 0.1, 0, 0.2);
+    display: flex;
+    justify-content: center;
+    position: relative;
+    gap: 137px;
+    width: 70vw;
+    border-radius: 8px;
+}
+
+.vert_line{
+    position: absolute;
+    left: 50%;
+    height: 90%;
+    width: 2.6px;
+    /* border-radius: 68px; */
+    background-color: #f1f1f1;
+    transform: translateX(-50%);
+    top: 23px;
+}
+
+input[type="number"] {
+    height: 47px; /* Retains the given height */
+    padding: 10px; /* Adds padding inside the input */
+    font-size: 1rem; /* Sets a readable font size */
+    border: 1px solid #ccc; /* Light gray border */
+    border-radius: 5px; /* Adds rounded corners */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Adds a subtle shadow */
+    transition: all 0.3s ease; /* Smooth transition for focus/hover states */
+}
+
+input[type="number"]:hover {
+    border-color: #007bff; /* Changes border color on hover */
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2); /* Enhances shadow on hover */
+}
+
+input[type="number"]:focus {
+    border-color: #007bff; /* Highlights border on focus */
+    outline: none; /* Removes the default focus outline */
+    box-shadow: 0 0 6px rgba(0, 123, 255, 0.5); /* Adds a glow effect on focus */
+}
+
+textarea{
+    border: 1px solid #ccc; /* Light gray border */
+    border-radius: 5px; /* Adds rounded corners */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Adds a subtle shadow */
+    transition: all 0.3s ease; /* Smooth transition for focus/hover states */
+}
+
+textarea:hover {
+    border-color: #007bff; /* Changes border color on hover */
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2); /* Enhances shadow on hover */
+}
+
+textarea:focus {
+    padding: 10px; /* Adds padding inside the input */
+    border-color: #007bff; /* Highlights border on focus */
+    outline: none; /* Removes the default focus outline */
+    box-shadow: 0 0 6px rgba(0, 123, 255, 0.5); /* Adds a glow effect on focus */
+}
+
+
+
+.col-6{
+    position: relative;
+    display: flex;
+    flex-direction: column;    
+    gap: 14px;
+}
+
+
+
+.breadcrumb a {
+    text-decoration: none;
+    color: #007bff;
+}
+
+.product-image img {
+    height: 400px;
+    width: 400px;
+    object-fit: cover;
+}
+
+.product-title h2 {
+    margin-top: 24px;
+    font-size: 2rem;
+    color: #333;
+}
+
+.product-rating span {
+    font-size: 1.6rem;
+    color: #ffc600;
+}
+
+.product-price .offer-price {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #28a745;
+}
+
+.product-image-main{
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 500px;
+}
+
+.product-btn-group{
+    display: flex;
+    gap: 10px;
+    position: absolute;
+    bottom: 30px;
+}
+
+.product-btn-group .buy-now,
+.product-btn-group .add-cart {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+.product-btn-group .buy-now {
+    background: #28a745;
+    color: #fff;
+}
+
+.product-btn-group .buy-now:hover {
+    background: #218838;
+}
+
+.product-btn-group .add-cart {
+    background: #007bff;
+    color: #fff;
+}
+
+.add-cart{
+    width: 152px;
+    height: 51px;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    font-size: 21px;
+    font-weight: bolder;
+    text-decoration: none;
+    transition: 0.3s ease-in-out;
+
+}
+
+.product-btn-group .add-cart:hover {
+    background: #0056b3;
+}
+
+.review {
+    color: black;
+    font-size: 20px;
+    display: flex;
+    gap: 11px;
+    flex-direction: column;
+    margin-left: 50px;
+    margin: 24px 50px;
+}
+
+.review-form {
+    margin-left: 50px;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    margin-top: 24px;
+}
+
+.review-form textarea {
+    resize: none;
+}

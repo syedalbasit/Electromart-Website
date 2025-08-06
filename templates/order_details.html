@@ -1,0 +1,68 @@
+{% extends 'base_nofooter.html' %}
+
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/order_details.css' %}">
+{% endblock %}
+
+{% block body %}
+<div class="order-details-container">
+    <h1 style="text-align: center;font-weight: bolder;font-size: 39px;">Order Details</h1>
+
+    <!-- Order Summary -->
+    <div class="order-summary">
+        <h3>Order Summary</h3>
+        <p><strong>Order ID:</strong> #{{ order.id }}</p>
+        <p><strong>Date:</strong> {{ order.created_at|date:"M d, Y H:i" }}</p>
+        <p><strong>Total Amount:</strong> ${{ order.total_amount }}</p>
+        <p><strong>Status:</strong> {{ order.status }}</p>
+        
+    </div>
+
+    <!-- Order Items -->
+    <h2>Items in this Order</h2>
+    <table class="order-items-table">
+        <thead>
+            <tr>
+                <th>Product</th>
+                <th>Quantity</th>
+                <th>Price</th>
+                <th>Total</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in order_items %}
+            <tr>
+                <td>{{ item.product.name }}</td>
+                <td>{{ item.quantity }}</td>
+                <td>${{ item.product.price }}</td>
+                <td>${{ item.total_price }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <!-- Tracking Details -->
+    {% if tracking %}
+    <div class="tracking-details">
+        <h2>Tracking Details</h2>
+        <p><strong>Status:</strong> {{ tracking.status }}</p>
+        <p><strong>Tracking Number:</strong> {{ tracking.tracking_number }}</p>
+        <p><strong>Courier Name:</strong> {{ tracking.courier_name }}</p>
+        {% if tracking.current_location %}
+        <p><strong>Current Location:</strong> {{ tracking.current_location }}</p>
+        {% endif %}
+        {% if tracking.estimated_delivery %}
+        <p><strong>Estimated Delivery:</strong> {{ tracking.estimated_delivery|date:"M d, Y" }}</p>
+        {% endif %}
+    </div>
+    {% else %}
+    <a href="{% url 'userdashboard' %}" class="buttonclass1" style="width: 215px;margin-top:20px;">Back to profile</a>
+    {% endif %}
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'js/logout.js' %}"></script>
+{% endblock %}

@@ -1,0 +1,351 @@
+{% extends "base_withsearch.html" %}
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/home.css' %}">
+{% endblock %}
+
+{% block body %}
+{% if user.is_authenticated %}
+
+<div class="action-buttons">
+    <a href="{% url 'cart' %}" style="width: 147px;height: 53px;border-radius: 3px;" class="buttonclass1">View Cart</a>
+    <a href="{% url 'checkout' %}" style="width: 120px;height: 53px;border-radius: 3px;" class="buttonclass2">Checkout</a>
+</div>
+{% comment %} {% else %}
+<p style="text-align: center; font-size: 1.2rem; margin: 20px 0;">Please <a href="{% url 'login' %}">login</a> to access your cart and checkout.</p> {% endcomment %}
+{% endif %}
+<div class="home__slider">
+    <div class="slider__content">
+        <div class="title_box">
+            <h2 class="sub_title">HP - Pavilion Wave</h2>
+            <h1 class="title">DESKTOP INTEL CORE i3</h1>
+            <p class="desc">Get 5% Bonus Coupon with No Min. Purchase Now</p>
+        </div>
+        <div class="btn_box">
+            <a class="btn_1" href="/products/2/">Shop Now</a>
+            <a class="btn_2" href="">View Collection</a>
+        </div>
+    </div>
+    <div class="swiper_container">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide">
+                
+                <img class="slider__image" src="{% static 'images/slider-01.webp' %}" alt="Image 1">
+            </div>
+            <div class="swiper-slide">
+                <img src="{% static 'images/slider-02.webp' %}" alt="Image 2">
+            </div>
+            <div class="swiper-slide">
+                <img style="width: 898px;height: 489px;display: block;position: relative;left: 790px;bottom:100px"
+                    src="{% static 'images/slider-03-removebg.png' %}" alt="Image 3">
+            </div>
+        </div>
+        <div class="swiper-pagination">
+            <span class="dot active1" onclick="to_slide1()"></span>
+            <span class="dot" onclick="to_slide2()"></span>
+            <span class="dot" onclick="to_slide3()"></span>
+        </div>
+    </div>
+</div>
+<div class="boxes">
+    <div class="box1">
+        <img src="{% static 'images/box1.png' %}" alt="box1">
+        <div class="box1__content"><a href="/products/2/" style="text-decoration:none;">
+            <p class="box1__head">New Arrivals 2023</p>
+            <h5 class="box__title">MICROSOFT SURFACE PRO 12.33"</h5>
+            <div class="price_cont">
+                <span class="price_title">From: </span>
+                <span class="price">$689. <small>99</small></span>
+            </div>
+        </a>
+        </div>
+    </div>
+    <div class="box2">
+        <img src="{% static 'images/box2.jpg' %}" alt="box2">
+        <div class="box2__content"><a href="/products/7" style="text-decoration:none;color:inherit">
+            <div class="offer">-40% OFF</div>
+            <div style="width: 220px;" class="box__title">XBOX ONE CONTROLLER WIRELESS</div>
+            <div style="margin-top: 47px;" class="box__desc">SAVE UPTO 40% OFF</div>
+        </a>
+        </div>
+    </div>
+</div>
+<div class="home__carousel">
+    <button><img class="prev" src="{% static 'svgs/prev.svg' %}" alt=""></button>
+    <div class="products">
+        <div class="products_wrapper">
+            {% for product in products %}
+            <div class="product_item">
+                <div class="product_image">
+                    {% if object.image %}
+                        <img src="{{ object.image.url }}" alt="Image">
+                    {% else %}
+                        <p>No image available</p>
+                    {% endif %}
+
+                    <!-- <img src="{{ product.image.url }}" alt="{{ product.name }}"> -->
+                </div>
+                <div class="product_desc">
+                    <div class="product_title">
+                        <a href="{% url 'product_description' product.id %}" style="text-decoration: none; color:inherit">{{ product.name }}</a>
+                    </div>
+                    <div class="product_rating">
+                        <i class="fa-solid fa-star" style="color:#FFD43B"></i>
+                        <i class="fa-solid fa-star" style="color:#FFD43B"></i>
+                        <i class="fa-solid fa-star" style="color:#FFD43B"></i>
+                        <i class="fa-solid fa-star" style="color:#FFD43B"></i>
+                        <i class="fa-solid fa-star" style="color:#FFD43B"></i>
+                    </div>
+                    <div class="product_price">
+                        <span class="price" style="color: #000;font-size: 20px;">${{ product.price }} <small></small></span>
+                    </div>
+                </div>
+                <div class="links">
+                    <div class="button-container">
+                        <button class="add-to-cart" data-product-id="{{ product.id }}"><a href="{% url 'add_to_cart' product.id %}" style="text-decoration:none;color:inherit">Add to Cart</a></button>
+                        <button class="wishlist"><i class="fa-regular fa-heart"></i></button>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+            
+            
+        </div>
+    </div>
+    <button><img class="next" src="{% static 'svgs/next.svg' %}" alt=""></button>
+</div>
+<div class="sub_category">
+    <div class="subcat_wrapper">
+        <div class="cat_left">
+            <div class="subcat_content">
+                <h2 style="color: #616161;">Electronics</h2>
+                <h1>JHASUX LAPTOP</h1>
+                <a class="btn_2" href="/products/2/">View Collection</a>
+            </div>
+        </div>
+        <div class="cat_right">
+            <div class="right_upper">
+                <div class="cat_types">
+                    <h2>COMPUTERS & LAPTOPS</h2>
+                    <div class="cat_btns">
+                        <button class="underline-btn active_btn">LAPTOPS</button>
+                        <button class="underline-btn">DESKTOP</button>
+                        <button class="underline-btn">MONITORS</button>
+                    </div>
+                </div>
+            </div>
+            <div class="right_lower">
+                <button style="    
+                position: absolute;
+                left: -14px;
+                background-color: transparent;
+                top: 50%;
+                border:none;
+                height: 46px;
+                width: 46px;
+                z-index: 111;
+                border-radius: 50%;"><img class="cat_prev cat_prnx" style="color: red;" src="{% static 'svgs/prev.svg' %}" alt=""></button>
+                <div class="cat_wrapper">
+                    <div class="cat_item">
+                        <div class="cat_image">
+                            <img src="{% static 'images/6.webp' %}" alt="">
+                        </div>
+                        <div class="cat_desc">
+                            <div class="product_title">
+                                iPhone 7 Pro | The ultimate iPhone.
+                            </div>
+                            <div class="product_rating">
+                                <i class="fa-solid fa-star" ></i>
+                                <i class="fa-solid fa-star" ></i>
+                                <i class="fa-solid fa-star" ></i>
+                                <i class="fa-solid fa-star" ></i>
+                                <i class="fa-solid fa-star" ></i>
+                            </div>
+                            <div class="product_price">
+                                <span class="price" style="color: #000;font-size: 20px;">$999 <small></small></span>
+                            </div>
+                        </div>
+                        <div class="cat_links">
+                            <div class="cat-button-container">
+                                <button class="add-to-cart">ADD TO CART</button>
+                                <button class="wishlist"><i class="fa-regular fa-heart"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cat_item">
+                        <div class="cat_image">
+                            <img src="{% static 'images/6.webp' %}" alt="">
+                        </div>
+                        <div class="cat_desc">
+                            <div class="product_title">
+                                iPhone 7 Pro | The ultimate iPhone.
+                            </div>
+                            <div class="product_rating">
+                                <i class="fa-solid fa-star" ></i>
+                                <i class="fa-solid fa-star" ></i>
+                                <i class="fa-solid fa-star" ></i>
+                                <i class="fa-solid fa-star" ></i>
+                                <i class="fa-solid fa-star" ></i>
+                            </div>
+                            <div class="product_price">
+                                <span class="price" style="color: #000;font-size: 20px;">$999 <small></small></span>
+                            </div>
+                        </div>
+                        <div class="cat_links">
+                            <div class="cat-button-container">
+                                <button class="add-to-cart" data-product-id="{{ product.id }}">Add to Cart</button>
+                                <button class="wishlist"><i class="fa-regular fa-heart"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cat_item">
+                        <div class="cat_image">
+                            <img src="{% static 'images/6.webp' %}" alt="">
+                        </div>
+                        <div class="cat_desc">
+                            <div class="product_title">
+                                iPhone 7 Pro | The ultimate iPhone.
+                            </div>
+                            <div class="product_rating">
+                                <i class="fa-solid fa-star" ></i>
+                                <i class="fa-solid fa-star" ></i>
+                                <i class="fa-solid fa-star" ></i>
+                                <i class="fa-solid fa-star" ></i>
+                                <i class="fa-solid fa-star" ></i>
+                            </div>
+                            <div class="product_price">
+                                <span class="price" style="color: #000;font-size: 20px;">$999 <small></small></span>
+                            </div>
+                        </div>
+                        <div class="cat_links">
+                            <div class="cat-button-container">
+                                <button class="add-to-cart">ADD TO CART</button>
+                                <button class="wishlist"><i class="fa-regular fa-heart"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cat_item">
+                        <div class="cat_image">
+                            <img src="{% static 'images/6.webp' %}" alt="">
+                        </div>
+                        <div class="cat_desc">
+                            <div class="product_title">
+                                iPhone 7 Pro | The ultimate iPhone.
+                            </div>
+                            <div class="product_rating">
+                                <i class="fa-solid fa-star" ></i>
+                                <i class="fa-solid fa-star" ></i>
+                                <i class="fa-solid fa-star" ></i>
+                                <i class="fa-solid fa-star" ></i>
+                                <i class="fa-solid fa-star" ></i>
+                            </div>
+                            <div class="product_price">
+                                <span class="price" style="color: #000;font-size: 20px;">$999 <small></small></span>
+                            </div>
+                        </div>
+                        <div class="cat_links">
+                            <div class="cat-button-container">
+                                <button class="add-to-cart">ADD TO CART</button>
+                                <button class="wishlist"><i class="fa-regular fa-heart"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button style="position: absolute;right: 6px; top: 50%;"><img style="position: absolute;top: -2px; left: -53px;" class="cat_next cat_prnx" src="{% static 'svgs/next.svg' %}" alt=""></button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="products_banner">
+        <div class="banner1 hidden-left" >
+            <div class="banner_content">
+                <h5>HURRY UP! BLACK FRIDAY</h5>
+                <h1>SALE UP TO 50% OFF</h1>
+            </div>
+        </div>
+        <div class="banner2 hidden-down">
+            <div class="banner_content">
+                <h5>CHROMECAST AUDIO</h5>
+                <h1>SALE 30% OFF</h1>
+            </div>
+        </div>
+        <div class="banner3 hidden-right">
+            <div class="banner_content">
+                <h5>GAME CONTROLLER</h5>
+                <h1>SALE 60% OFF</h1>
+            </div>
+        </div>
+</div>
+<div class="categories">
+    <h2>SHOP BY CATEGORIES</h2>
+    <div class="line"></div>
+    <div class="parent">
+        <div class="cat1 cat_boxes">
+            <div class="category_content">
+                <h4>Headphones & Audio</h4>
+                <a href="#">VIEW MORE</a>
+            </div> 
+        </div>
+        <div class="cat2 cat_boxes">
+            <div class="category_content">
+                <h4>Mobile Phones</h4>
+                <a href="#">VIEW MORE</a>
+            </div>  </div>
+        <div class="cat3 cat_boxes">
+            <div class="category_content">
+                <h4>Cameras</h4>
+                <a href="#">VIEW MORE</a>
+            </div>  </div>
+        <div class="cat4 cat_boxes">
+            <img src="{% static 'categories/gaming_cat.png' %}" alt="">
+            <div class="category_content">
+                <h4>Gaming Accessories</h4>
+                <a href="#">VIEW MORE</a>
+            </div>  </div>
+        <!-- <div class="cat5 cat_boxes">
+            <div class="category_content">
+                <h4>Audio Devices</h4>
+                <a href="#">VIEW MORE</a>
+            </div>  </div> -->
+        <div class="cat6 cat_boxes">
+            <div class="category_content">
+                <h4>Televisions & Projectors</h4>
+                <a href="#">VIEW MORE</a>
+            </div>  </div>
+        <div class="cat7 cat_boxes">
+            <div class="category_content">
+                <h4>Tablets & iPads</h4>
+                <a href="#">VIEW MORE</a>
+            </div>  </div>
+        <div class="cat8 cat_boxes">
+            <img src="{% static 'categories/product02.png.webp' %}" alt="">
+            <div class="category_content">
+                <h4>wearable technologies</h4>
+                <a href="#">VIEW MORE</a>
+            </div>  </div>
+        <div class="cat9 cat_boxes">
+            <div class="category_content">
+                <h4>Laptops & Computers</h4>
+                <a href="#">VIEW MORE</a>
+            </div>  
+        </div>
+    </div>
+</div>
+<div class="sale_banner">
+    <img class="banner_img" src="{% static 'categories/bg1.jpg' %}" alt="">
+    <div class="divider-content">
+        <h2 class="sale_title">DJI Mavic Air Drone <br><span>Up To 60% Off</span></h2>
+        <p class="sale_desc">Get 5% Bonus Coupon with No Min. Purchase Now</p>
+        <div class="btn_box" style="margin-top: 20px">
+            <a class="sales_btn_1" href="shop.html">SHOP NOW</a>
+            <a class="sales_btn_2" href="shop.html">VIEW COLLECTION</a>
+        </div>
+      </div>
+</div>
+
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'js/home.js' %}"></script>
+{% endblock %}

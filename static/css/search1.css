@@ -1,0 +1,192 @@
+.search-results {
+    max-width: 1383px;
+    padding: 20px;
+    /* background: #f9f9f9; */
+    margin-left: 116px;
+    margin-top: 50px;
+}
+
+.product-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+/* 
+.product-item {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 10px;
+    width: 200px;
+    text-align: center;
+}
+
+.product-item img {
+    max-width: 100%;
+    height: auto;
+}
+
+.product-item h2 {
+    font-size: 1.2rem;
+    margin: 10px 0;
+}
+
+.product-item p {
+    font-size: 1rem;
+    color: #555;
+} */
+/* 
+.prev {
+    position: absolute;
+    left: 0;
+    height: 46px;
+    width: 46px;
+    margin: 0 20px;
+    cursor: pointer;
+    z-index: 11111;
+}
+
+
+.next {
+    position: absolute;
+    right: 0;
+    height: 46px;
+    width: 46px;
+    margin: 0 20px;
+    cursor: pointer;
+    z-index: 11111;
+} */
+
+.products {
+    gap: 55px;
+
+}
+
+.fa-solid{
+    color: #FFD43B;
+}
+
+.products_wrapper {
+    display: flex;
+    margin-left: 72px;
+    gap: 38px;
+    position: relative;
+    transition: transform 0.3s ease;
+    overflow: hidden;
+}
+
+
+.product_item {
+    width: 342px;
+    height: 500px;
+    cursor: pointer;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding-top: 20px;
+}
+
+.product_desc {
+    margin: 12px 32px;
+    height: 183px;
+}
+
+.product_title {
+    font-size: 18px;
+    font-weight: bold;
+    line-height: 1.25;
+}
+
+.product_rating {
+    height: 50px;
+    margin: 13px -3px;
+    display: flex;
+}
+
+
+.product_image {
+    display: flex;
+    justify-content: center;
+}
+
+.product_image img {
+    height: 250px;
+    width: 100%;
+    object-fit: contain;
+    z-index: -111;
+}
+
+
+/* Basic styling for button */
+
+.links {
+    display: flex;
+    justify-content: center;
+
+}
+
+.button-container {
+    position: relative;
+    display: flex;
+    top: -38px;
+    gap: 20px;
+}
+
+.add-to-cart {
+    background-color: #f1f1f1;
+    /* Button color */
+    color: #0056b3;
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    text-transform: uppercase;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+    width: 170px;
+    height: 48px;
+}
+
+.add-to-cart:hover {
+    background-color: #0056b3;
+    color: #f1f1f1;
+}
+
+.wishlist {
+    height: 48px;
+    width: 48px;
+    background-color: #f1f1f1;
+    /* Button color */
+    color: #0056b3;
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    text-transform: uppercase;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+
+.wishlist i {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.wishlist:hover {
+    background-color: #0056b3;
+    font-weight: bolder;
+    color: #f1f1f1;
+}
+
+.carousel_active {
+    display: block;
+}
+
+.product_item:hover img {
+    transform: scale(1.03);
+    transition: transform 0.3s ease-in-out;
+}

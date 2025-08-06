@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/order_success.css' %}">
+
+{% endblock %}
+
+{% block body %}
+<div class="success-container">
+    <h1>Order Placed Successfully!</h1>
+    <p>Thank you for your order. Your order ID is <strong>{{ order.id }}</strong>.</p>
+    <p>We've received your order and will process it soon.</p>
+
+    <div class="order-details">
+        <h3>Order Summary:</h3>
+        <ul>
+            <li><strong>Date:</strong> {{ order.created_at|date:"F j, Y, g:i a" }}</li>
+            <li><strong>Total Amount:</strong> ${{ order.total_amount }}</li>
+            <li><strong>Status:</strong> {{ order.status }}</li>
+            <li><strong>Payment Method:</strong> {{ payment.payment_method }}</li>
+            <li><strong>Payment Number:</strong> {{ payment.payment_number }}</li>
+            {% if payment.payment_number %}
+            {% endif %}
+        </ul>
+
+        <h3>Items Ordered:</h3>
+        <ul>
+            {% for item in order.order_items.all %}
+                <li>{{ item.quantity }} x {{ item.product.name }} - ${{ item.price }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+
+    <a href="{% url 'home' %}" class="btn">Continue Shopping</a>
+    <a href="{% url 'download_receipt' order.id %}" class="btn">Download Receipt</a>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'js/signup.js' %}"></script>
+{% endblock %}

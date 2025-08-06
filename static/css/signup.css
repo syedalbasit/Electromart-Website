@@ -1,0 +1,186 @@
+
+
+.main__wrapper{
+    background-image:  linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.4)) ,url('../images/assets/contactheader.jpg');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 92vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.wrapper{
+    display: flex;
+
+    align-items: center;
+    flex-direction: column;
+    min-width: 420px;
+    min-height: 500px;
+    overflow: hidden;
+    background: #1c1c1c;
+    border-radius: 8px;
+    backdrop-filter: blur(7px);
+    position: relative;
+}
+
+.wrapper form{
+    position: absolute;
+    inset: 5px;
+    background-color:#222;
+    border-radius: 8px;
+    padding: 3rem 4rem;
+    z-index: var(--smallest--z-index);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    row-gap: 2rem;
+
+}
+
+.wrapper form h2{
+    margin-bottom: 1rem;
+    font-size: 3rem;
+    color: #fff;
+}
+
+.wrapper::before{
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 420px;
+    height: 500px;
+    background: linear-gradient(0deg, transparent, #1ECB15,#1ECB15, #1ECB15 ,#1ECB15);
+    z-index: -1;
+    transform-origin: bottom right;
+    animation: animate 3s linear infinite;
+}
+
+.inputbox{
+    width: 100%;
+    position: relative;
+}
+
+
+.inputbox input{
+    width: 100%;
+    font-size: 1.7rem;
+    border: none;
+    outline: none;
+    border-bottom: 2px solid rgba(255, 255, 255, .75);
+    background-color:transparent !important;
+    padding: 1rem 4rem 1rem 0.5rem;
+    color: #fff;
+    border-radius: 0px;
+}
+
+.name__container {
+    display: flex; /* Use flexbox to align items side by side */
+    gap: 15px; /* Add space between the firstname and lastname inputs */
+    width: 100%; /* Ensure it takes up full width of the form */
+}
+
+.name__container .login__box {
+    flex: 1; /* Make both fields equal in size */
+    position: relative; /* For positioning icons */
+}
+
+.inputbox input:focus{
+    background-color: transparent;
+}
+
+.inputbox i{
+    position: absolute;
+    bottom: 0;
+    right: 3px;
+    padding: 0 0;
+    height: 30px;
+    width: 30px;
+    background: transparent;
+    font-size: 2rem;
+    color: rgba(255, 255, 255, .75);
+}
+
+
+.btn1{
+    width: 100%;
+}
+
+.btn1 .account__btn{
+    margin: 1rem 0;
+    display: inline-block;
+    background-color: #1ECB15;
+    color: #fff;
+    font-size: 1.7rem;
+    padding: 1.5rem 3rem;
+    font-weight: 600;
+    border-radius: 30px;
+    width: 100%;
+    transition: all 0.5s ease-in-out ;
+    cursor: pointer;
+}
+
+.btn1 .account__btn:hover{
+    box-shadow: 1px 1px 15px 1px #1ECB15;
+}
+
+.reminber p{
+    font-size: 1.6rem;
+}
+
+
+@keyframes animate {
+    0%{
+        transform: rotate(0deg);
+    }
+    100%{
+        transform: rotate(360deg);
+    }
+    
+}
+
+
+.login {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Adjust height to ensure proper layout */
+    padding: 20px;
+}
+
+.outer_form {
+    width: 100%; /* Make it responsive */
+    max-width: 600px; /* Set a maximum width for the form */
+    margin: auto;
+}
+
+.login__form {
+    background-color: #fff; /* Add background color */
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.2); /* Optional for better appearance */
+    width: 100%; /* Ensures it takes up the full width of the container */
+}
+
+.name__container {
+    display: flex;
+    gap: 15px;
+    width: 100%; /* Ensures it adjusts with the form */
+}
+
+.login__box {
+    flex: 1; /* Ensures firstname and lastname inputs are equal in width */
+    position: relative;
+}
+
+.login__input {
+    width: 100%;
+    padding: 10px 15px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}

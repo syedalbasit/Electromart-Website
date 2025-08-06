@@ -1,0 +1,176 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/contact.css' %}">
+{% endblock %}
+
+{% block body %}
+<div class="contact__main__header">
+
+</div>
+
+<div class="main__contact__container container">
+    <div class="contact__rentaly">
+        <h2>Do you have any questions?</h2>
+        <form id="contactForm">
+            <div class="contact__info">
+                <input class="user_name" type="text" placeholder="Your Name" id="name" required>
+                <input class="user_email" type="email" placeholder="Your Email (Gmail only)" id="email" required>
+                <input class="ph_no" type="tel" placeholder="Your Phone (11 digits)" id="phonenumber" maxlength="11" required>
+            </div>
+            <textarea class="message" id="message" placeholder="Your Message" required></textarea>
+            <button type="submit" id="btn" class="send__mail buttonclass1" style="width: 163px;border-radius: 8p">Send Message</button>
+        </form>
+    </div>
+
+    <div class="main__testimonial">
+        <div class="testimonial__header">
+            <h3 style="color: #121212;font-size: 2em;" class>Testimonial</h3>
+            <span></span>
+        </div>
+        <div class="testimonial__wrapper">
+            <div class="quote-icon">
+                <i class="fa-solid fa-quote-left" id="quote"></i>
+            </div>
+            <div class="testimonial-container" id="testimonial-container"></div>
+            <button id="prev">&lt;</button>
+            <button id="next">&gt;</button>
+        </div>
+    </div>
+</div>
+
+<h2 style="text-align: center;font-size: 2em;">
+    Our <span class="styling__content"> Location</span>
+    <span class="underline__style"></span>
+</h2>
+<div class="location__container container">
+    <div class="contact__specification hidden">
+        <div class="contact__offices hidden-left">
+            <h2 style="font-size: 1.7rem;">Karachi Office</h2>
+            <div>
+                <i class="fa-solid fa-location-dot"></i>
+                <p>Asia Pacific Trade Center, Rashid Minhas Rd, Block 19
+                    Gulistan-e-Johar</p>
+            </div>
+            <p><i class="fa-solid fa-phone"></i> &nbsp; +92 3368522620</p>
+            <p style="color: #0163d2">
+                <i class="fa-solid fa-envelope"></i> &nbsp;
+                syedabdulbasit@gmail.com
+            </p>    
+        </div>
+        <div class="contact__offices hidden-down" >
+            <h2 style="font-size: 1.7rem;">Islamabad Office</h2>
+            <div>
+                <i class="fa-solid fa-location-dot"></i>
+                <p>Al Tawakal Market, Office # 1, First Floor, G15، 4 Grand
+                    Trunk Road، G-15</p>
+            </div>
+            <p><i class="fa-solid fa-phone"></i> &nbsp; +92 3095783353</p>
+            <p style="color: #0163d2">
+                <i class="fa-solid fa-envelope"></i> &nbsp;
+                ayankhan@gmail.com
+            </p>
+        </div>
+        <div class="contact__offices hidden-right">
+            <h2 style="font-size: 1.7rem;">Multan Office</h2>
+
+            <div>
+                <i class="fa-solid fa-location-dot"></i>
+                <p>165 G Block Shah Rukne Alam Colony Multan</p>
+            </div>
+
+            <p><i class="fa-solid fa-phone"></i> &nbsp; +92 3412073063</p>
+            <p style="color: #0163d2">
+                <i class="fa-solid fa-envelope"></i> &nbsp; mudassir@gmail.com
+            </p>
+        </div>
+    </div>
+    <div class="map__upper__container">
+        <div class="map-container">
+            <img src="../static/svgs/pk.svg" alt />
+            <div class="marker karachi-dot" title="Karachi"></div>
+            <div class="marker-label karachi-label">Karachi</div>
+            <div class="marker islamabad-dot" title="Islamabad"></div>
+            <div class="marker-label islamabad-label">Islamabad</div>
+            <div class="marker multan-dot" title="Multan"></div>
+            <div class="marker-label multan-label">Multan</div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block extra_js %}
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+<script>
+    // Initialize EmailJS
+    emailjs.init("-6bIFvHsiLq5GmfWm"); // Replace with your actual public key
+  
+    // Function to send email
+    function sendMail() {
+      const checkButton = document.querySelector("#btn");
+  
+      checkButton.addEventListener("click", (e) => {
+        e.preventDefault(); // Prevent the default button behavior
+  
+        // Collect input values
+        let name = document.querySelector(".user_name").value.trim();
+        let email = document.querySelector(".user_email").value.trim();
+        let number = document.querySelector(".ph_no").value.trim();
+        let message = document.querySelector(".message").value.trim();
+  
+        // Validation: Ensure all fields are filled
+        if (!name || !email || !number || !message) {
+          alert("Please fill out all the fields.");
+          return;
+        }
+  
+        // Validation: Check if email is valid
+        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+          alert("Please enter a valid email address.");
+          return;
+        }
+  
+        // Validation: Check if the phone number is exactly 11 digits and numeric
+        if (number.length !== 11 || !/^\d+$/.test(number)) {
+          alert("Phone number must be 11 numeric digits.");
+          return;
+        }
+  
+        // Prepare parameters for EmailJS
+        const params = {
+          user_name: name,
+          ph_no: number,
+          user_email: email,
+          message: message,
+        };
+  
+        console.log("Sending the following parameters:", params);
+  
+        // Send Email using EmailJS
+        emailjs
+          .send("service_keqncfa", "template_4f02w0v", params) // Replace with your actual service and template IDs
+          .then((res) => {
+            alert("Email sent successfully!");
+            console.log("EmailJS response:", res);
+  
+            // Clear the input fields after success
+            document.querySelector(".user_name").value = "";
+            document.querySelector(".user_email").value = "";
+            document.querySelector(".ph_no").value = "";
+            document.querySelector(".message").value = "";
+          })
+          .catch((err) => {
+            console.error("Error sending email:", err);
+            alert("Something went wrong! Please try again.");
+          });
+      });
+    }
+  
+    // Call the function to bind the event listener
+    sendMail();
+  </script>
+
+<script src="{% static 'js/contact.js' %}"></script>
+{% endblock %}

@@ -1,0 +1,88 @@
+{% extends "base_nofooter.html" %}
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/product_description.css' %}">
+{% endblock %}
+
+{% block body %}
+<div class="container">
+    <div class="single-product">
+        <!-- Breadcrumb -->
+        <div class="breadcrumb">
+            {% comment %} <span><a href="{% url '' %}">Home</a></span> {% endcomment %}
+        </div>
+        <!-- Product Details -->
+         <div class="row_outer" style="display: flex;justify-content: center;">
+        <div class="row">
+            <div class="vert_line"></div>
+            <div class="col-6" >
+                <div class="product-image">
+                    <div class="product-image-main">
+                        <img src="{{ product.image.url }}" alt="{{ product.name }}">
+                    </div>
+                </div>
+            </div>
+            <div class="col-6" style="width: 400px;">
+                <div class="product-title">
+                    <h2>{{ product.name }}</h2>
+                </div>
+                <div class="product-rating">
+                    <span class="" style="color: black;">({{ reviews|length }} reviews)</span>
+                </div>
+                <div class="product-price">
+                    <span class="offer-price">${{ product.price }}</span>
+                </div>
+                <div class="product-details">
+                    <h3 style="font-size: 24px;">Product Details</h3>
+                    <p style="font-size: 22px;padding-top: 14px;">{{ product.description }}</p>
+                </div>
+                <div class="product-btn-group">
+                    <a href="{% url 'add_to_cart' product.id %}" class="buttonclass1" style="width: 161px;height:53px;">ADD TO CART</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+        <!-- Divider -->
+        <div class="divider"></div>
+
+        <!-- Customer Reviews -->
+        <div class="reviews">
+            <h3 style="text-align: center;font-size: 36px;margin-top: 61px;margin-bottom: 26px">Customer Reviews</h3>
+            {% for review in reviews %}
+            <div class="review">
+                <p><strong>{{ review.customer.user.username }}</strong></p>
+                <p>Rating: {{ review.rating }} / 5</p>
+                <p>{{ review.comment }}</p>
+                <p><small>Reviewed on {{ review.created_at|date:"M d, Y H:i" }}</small></p>
+            </div>
+            <hr>
+            {% empty %}
+            <p style="text-align: center;font-size: 26px;">No reviews yet. Be the first to review this product!</p>
+            {% endfor %}
+        </div>
+
+        <!-- Review Submission Form -->
+        {% if user.is_authenticated %}
+        <div class="review-form">
+            <h3 style="text-align: center;font-size: 23px;">Write a Review</h3>
+            <form method="post" action="{% url 'submit_review' product.id %}" style="font-size: 20px;display: flex;flex-direction: column;gap: 14px">
+                {% csrf_token %}
+                <div>
+                    <label for="rating">Rating (1-5):</label>
+                    <input type="number" id="rating" name="rating" min="1" style="height: 47px" max="5" required>
+                </div>
+                <div>
+                    <label for="comment" style="position: relative;top: -44px">Comment:</label>
+                    <textarea id="comment" name="comment" rows="4" style="margin-left: 18px;font-size: 21px;" required></textarea>
+                </div>
+                <button type="submit" class="buttonclass1" style="width: 218px;">Submit Review</button>
+            </form>
+        </div>
+        {% else %}
+        <a href="{% url 'login' %}" style="text-decoration:none;color:inherit;"><p style="height: 78px;font-size: 23px;text-align: center;margin-top: 39px;">Please Log in to write a review.</p></a>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

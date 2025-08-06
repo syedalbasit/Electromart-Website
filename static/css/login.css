@@ -1,0 +1,167 @@
+/*=============== GOOGLE FONTS ===============*/
+
+
+/*=============== VARIABLES CSS ===============*/
+:root {
+  /*========== Colors ==========*/
+  --white-color: #FFFFFF;
+  --black-color: #333333;
+  --primary-color: #0163d2;  /* Customize the primary color here */
+  --secondary-color: #666666;
+  --border-color: #dddddd;
+  --input-bg-color: #f9f9f9;
+
+  /*========== Font ==========*/
+  --body-font: "Poppins", sans-serif;
+  --h1-font-size: 2rem;
+  --normal-font-size: 1rem;
+  --small-font-size: 0.875rem;
+}
+
+/*=============== BASE ===============*/
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+
+}
+
+.buttonclass2{
+  color: white;
+}
+
+.buttonclass2:hover{
+  border: none;
+}
+
+body, input, button {
+  font-family: var(--body-font);
+  font-size: var(--normal-font-size);
+  background-color: var(--white-color);
+  color: var(--black-color);
+}
+
+a {
+  text-decoration: none;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+/*=============== LOGIN/REGISTER FORM ===============*/
+.login {
+  position: relative;
+  height: 88.2vh;
+  display: grid;
+  place-items: center;
+}
+
+.login__bg {
+  position: absolute;
+  width: 100%;
+  height: 114%;
+  object-fit: cover;
+  filter: brightness(0.6);
+  z-index: -111;
+  top: -90px;
+
+}
+
+.login__form {
+  position: relative;
+  width: 100%;
+  max-width: 461px;
+  background-color: var(--white-color);
+  border: 1px solid var(--border-color);
+  padding: 2.5rem 1.5rem;
+  border-radius: 30px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.login__title {
+  text-align: center;
+  font-size: var(--h1-font-size);
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+  color: var(--primary-color);
+}
+
+.login__inputs {
+  display: grid;
+  row-gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.login__box {
+  display: flex;
+  align-items: center;
+  background-color: var(--input-bg-color);
+  padding: 0.8rem 1rem;
+  border-radius: 50px;
+  border: 1px solid var(--border-color);
+}
+
+.login__input {
+  width: 100%;
+  background: none;
+  border: none;
+  outline: none;
+  padding-left: 0.5rem;
+  color: var(--black-color);
+}
+
+.login__input::placeholder {
+  color: var(--secondary-color);
+}
+
+.login__box i {
+  font-size: 1.2rem;
+  color: var(--primary-color);
+}
+
+.login__button {
+  width: 100%;
+  padding: 0.9rem;
+  background-color: var(--primary-color);
+  font-weight: bolder;
+  color: white;
+  text-align: center;
+  border: none;
+  font-size: 20px;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: background 0.3s;
+  margin-top: 13px;
+}
+
+.login__button:hover {
+  background-color: #000;
+}
+
+.login__register, .login__forgot {
+  text-align: center;
+  padding-top: 15px;
+}
+
+.login__register a, .login__forgot {
+  color: var(--primary-color);
+}
+
+.login__register a:hover, .login__forgot:hover {
+  text-decoration: underline;
+}
+
+.login__forgot {
+  display: block;
+  margin: 1rem 0;
+}
+
+/*=============== BREAKPOINTS ===============*/
+@media (min-width: 576px) {
+  .login__form {
+    padding: 3rem 2rem;
+  }
+}

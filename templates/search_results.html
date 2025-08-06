@@ -1,0 +1,50 @@
+{% extends "base_withsearch.html" %}
+
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/search1.css' %}">
+
+{% endblock %}
+
+{% block body %}
+<div class="search-results">
+    <h1 style="position: relative;top: -21px;text-align: center;font-size: 36px;">Search Results for "{{ query }}"</h1>
+    <div class="product-list">
+        {% if products %}
+            {% for product in products %}
+    <div class="product_item">
+    <div class="product_image">
+        <img src="{{ product.image.url }}" alt="{{ product.name }}">
+    </div>
+    <div class="product_desc">
+        <div class="product_title">
+            <a href="{% url 'product_description' product.id %}" style="text-decoration: none; color:inherit">{{ product.name }}</a>
+        </div>
+        <div class="product_rating">
+            <i class="fa-solid fa-star" ></i>
+            <i class="fa-solid fa-star" ></i>
+            <i class="fa-solid fa-star" ></i>
+            <i class="fa-solid fa-star" ></i>
+            <i class="fa-solid fa-star" ></i>
+        </div>
+        <div class="product_price">
+            <span class="price" style="color: #000;font-size: 20px;font-weight: bold;">${{ product.price }} <small></small></span>
+        </div>
+    </div>
+    <div class="links">
+        <div class="button-container">
+            <button class="add-to-cart" data-product-id="{{ product.id }}"><a href="{% url 'add_to_cart' product.id %}" style="text-decoration:none;color:inherit">Add to Cart</a></button>
+            <button class="wishlist"><i class="fa-regular fa-heart"></i></button>
+        </div>
+    </div>
+</div>
+            {% endfor %}
+        {% else %}
+            <p>No products match your search for "{{ query }}".</p>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}
+
+

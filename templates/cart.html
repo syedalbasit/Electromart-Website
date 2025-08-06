@@ -1,0 +1,141 @@
+{% extends "base_nofooter.html" %}
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/cart.css' %}">
+{% endblock %}
+
+{% block body %}
+<div class="header-container">
+    <div class="select">
+        <select class="categorySelect">
+            <option value disabled selected hidden>Browse Categories</option>
+            <option value="headphones-audio.html">Headphones & Audio</option>
+            <option value="mobile-phones.html">Mobile Phones</option>
+            <option value="cameras.html">Cameras</option>
+            <option value="gaming-accessories.html">Gaming Accessories</option>
+            <option value="audio-devices.html">Audio Devices</option>
+            <option value="televisions-projectors.html">Televisions & Projectors</option>
+        </select>
+        <div class="select_arrow"></div>
+    </div>
+    <div class="search-container">
+        <input type="text" placeholder="Search product..." class="search-input">
+        <button class="search-button"><i class="fa-solid fa-2xl fa-magnifying-glass" style="color: #ffffff;"></i></button>
+    </div>
+    <div class="support-info">
+        <a href="tel:800456789987" class="support-number"><b>800 456 789-987</b></a>
+        <span class="support-text">24/7 Free Support</span>
+    </div>
+</div>
+
+<section class="shopping-cart-area">
+    <div class="container pt--0">
+        <div class="row">
+            <div class="col-12">
+                <div class="entry-header text-center">
+                    <h2 class="entry-title">Cart</h2>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="shopping-cart-form table-responsive">
+                    <table class="table text-center">
+                        <thead>
+                            <tr>
+                                <th class="product-remove">Remove</th>
+                                <th class="product-thumbnail">Image</th>
+                                <th class="product-name">Product</th>
+                                <th class="product-price">Price</th>
+                                <th class="product-quantity">Quantity</th>
+                                <th class="product-subtotal">Total Price</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% if cart_items %}
+                            {% for item in cart_items %}
+                            <tr class="tbody-item">
+                                <td class="product-remove">
+                                    <a class="remove" href="{% url 'remove_from_cart' item.id %}">×</a>
+                                </td>
+                                <td class="product-thumbnail">
+                                    <div class="thumb">
+                                        <a href="#">
+                                            <img src="{{ item.product.image.url }}" alt="Product Image">
+                                        </a>
+                                    </div>
+                                </td>
+                                <td class="product-name">
+                                    <a class="title" href="{% url 'product_description' item.product.id %}">{{ item.product.name }}</a>
+                                </td>
+                                <td class="product-price">
+                                    <span class="price">${{ item.product.price }}</span>
+                                </td>
+                                <td class="product-quantity">
+                                    <form action="{% url 'update_cart' item.id %}" method="post" class="update-form" style="position: relative;display: flex;justify-content: start;align-items: center;" data-item-id="{{ item.id }}">
+                                        {% csrf_token %}
+                                        <input type="number" name="quantity" value="{{ item.quantity }}" min="1" id="quantity-{{ item.id }}" style="text-align: center;height: 52px;width: 55px;margin-left: 15px;">
+                                        <button type="submit" class="update-btn" style="display: flex;align-items: center;justify-content: center;line-height: 1;text-decoration: none;color: #ffffff;font-size: 18px;border-radius: 3px;width: 85px;height: 53px;font-weight: bold;border: 2px solid #0163d2;transition: 0.3s;background-color: #0163d2; position: absolute;top: 0;right: 0;">Update</button>
+                                    </form>
+                                </td>
+                                <td class="product-subtotal" id="subtotal-{{ item.id }}">
+                                    ${{ item.total_price }}
+                                </td>
+                            </tr>
+                            {% endfor %}
+                            {% else %}
+        
+                            <tr>
+                                <td colspan="6">
+                                    <h2 style="text-align: center;font-size:37px;">Your cart is empty! </h2>
+                                    <a href="/" class="btn-return-home buttonclass1" style="width: 194px;transform: translateX(276%);margin-bottom: 55px;">Continue Shopping</a>
+                                </td>
+                            </tr>
+            
+                            {% endif %}
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 col-lg-6">
+                <div class="cart-totals-wrap">
+                    <h2 class="title" style="font-weight:bolder;">Cart Total</h2>
+                    <table>
+                        <tbody>
+                            <tr class="cart-subtotal">
+                                <th style="font-weight: bold;padding-left: 13px;">Subtotal</th>
+                                <td><span class="amount" id="cart-total">${{ total }}</span></td>
+                            </tr>
+                            <tr class="shipping-totals">
+                                <th style="font-weight: bold;padding-left: 13px;">Shipping</th>
+                                <td>
+                                    <ul class="shipping-list">
+                                        <li class="radio" style="margin-right: 12px">
+                                            <label for="flat-rate">Shipping rate: <span>$80</span></label>
+                                        </li>
+                                    </ul>
+                                </td>
+                            </tr>
+                            <tr class="order-total">
+                                <th style="font-weight: bold;padding-left: 13px;">Total</th>
+                                <td><span class="amount">${{ after_shipping_rate }}</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="text-end">
+                        <a href="{% url 'checkout' %}" class="checkout-button">Proceed to checkout</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'js/cart.js' %}"></script>
+{% endblock %}

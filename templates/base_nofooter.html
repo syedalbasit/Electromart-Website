@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/de9e1561cd.js"
+      crossorigin="anonymous" defer></script>
+      <link href="https://cdn.jsdelivr.net/npm/remixicon/fonts/remixicon.css" rel="stylesheet">
+    <meta name="csrf-token" content="{{ csrf_token }}">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    {% block extra_css %}{% endblock %}
+  </head>
+  <body>
+    <div class="main__home">
+      <input type="hidden" name="csrfmiddlewaretoken" value="{{ csrf_token }}">
+      <nav class="navbar">
+        <div class="logo"><a href="{% url 'home' %}"><img
+              src="{% static './images/logobg.png' %}"
+              alt="Electro Mart" /></a></div>
+        <ul class="nav__items">
+          <a href="{% url 'home' %}"
+            class="nav__link {% if request.path == '/' %}  {% endif %}">Home</a>
+          <a href="{% url 'about' %}"
+            class="nav__link {% if request.path == '/about' %}  {% endif %}">About</a>
+          <a href="{% url 'categories' %}"
+            class="nav__link {% if request.path == '/categories' %}  {% endif %}">Categories</a>
+          <a href="{% url 'userdashboard' %}"
+            class="nav__link {% if user.is_authenticated %} action {% else %} guest {% endif %}">
+            Dashboard
+          </a>
+          <a href="{% url 'contact' %}"
+            class="nav__link {% if request.path == '/contact' %}  {% endif %}">Contact</a>
+        </ul>
+        <div class="account__btns">
+          {% if user.is_authenticated %}
+          <!-- Logged-in User Section -->
+          <div class="user__menu">
+            <a href="{% url 'userdashboard' %}" class="user__link">
+              <img
+                src="{% static './images/userprofile.png' %}"
+                alt="{{ user.username }}" class="user__photo">
+              <span class="user__name">{{ user.username }}</span>
+            </a>
+            <a href="{% url 'logout' %}" class="buttonclass1">Logout</a>
+          </div>
+          {% else %}
+          <!-- Login and Signup Buttons -->
+          <a href="{% url 'login' %}" class="buttonclass1">Login</a>
+          <a href="{% url 'signup' %}" class="buttonclass2">Signup</a>
+          {% endif %}
+        </div>
+      </nav>
+      <!-- Messages Configuration -->
+      <div class="messages">
+        {% if messages %}
+        {% for message in messages %}
+        <div class="alert hidden-up alert-{{ message.tags }}">
+          {{ message }}
+        </div>
+        {% endfor %}
+        {% endif %}
+      </div>
+      {% block body %}{% endblock %}
+    </div>
+    <script src="{% static 'js/base.js' %}"></script>
+    {% block extra_js %}{% endblock %}
+  </body>
+</html>

@@ -1,0 +1,65 @@
+{% extends "base_nofooter.html" %}
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/userdashboard.css' %}">
+{% endblock %}
+
+
+{% block body %}
+<div class="dashboard">
+    <h1 style="text-align: center">Welcome, {{ customer.user.username }}</h1>
+    <h2 style="text-align: center;font-size: 24px;">Your Dashboard</h2>
+
+    <div class="orders">
+        <h3 style="font-size:24px">Your Orders</h3>
+        {% if orders_with_tracking %}
+        <table class="orders-table">
+            <thead>
+                <tr style="background: #0163d2">
+                    <th>Order ID</th>
+                    <th>Total Amount</th>
+                    <th>Status</th>
+                    <th>Tracking</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in orders_with_tracking %}
+                <tr>
+                    <td>#{{ item.order.id }}</td>
+                    <td>${{ item.order.total_amount }}</td>
+                    <td>{{ item.order.status }}</td>
+                    <td>
+                        {% if item.tracking %}
+                            <strong>Status:</strong> {{ item.tracking.status }}<br>
+                            <strong>Tracking Number:</strong> {{ item.tracking.tracking_number }}<br>
+                            <strong>Courier:</strong> {{ item.tracking.courier_name }}<br>
+                            {% if item.tracking.current_location %}
+                                <strong>Location:</strong> {{ item.tracking.current_location }}<br>
+                            {% endif %}
+                            {% if item.tracking.estimated_delivery %}
+                                <strong>Estimated Delivery:</strong> {{ item.tracking.estimated_delivery|date:"M d, Y" }}<br>
+                            {% endif %}
+                        {% else %}
+                            No tracking details available.
+                        {% endif %}
+                    </td>
+                    <td>
+                        <a href="{% url 'order_details' item.order.id %}" class="btn-link">View Details</a> | 
+                        <a href="{% url 'download_receipt' item.order.id %}" class="btn-link">Download Receipt</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        {% else %}
+        <p>You have no orders yet.</p>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'js/logout.js' %}"></script>
+{% endblock %}
